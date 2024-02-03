@@ -14,6 +14,17 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItTOC = require('markdown-it-toc-done-right');
 const markdownItEmoji = require('markdown-it-emoji');
 
+
+// Custom header and footer content
+const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
+const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
+const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
+const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
+const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');
+
+//end of headers
+
+
 function nullCoalescing(value, fallback) {
 	return value !== undefined && value !== null ? value : fallback;
 }
