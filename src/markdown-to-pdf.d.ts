@@ -4,6 +4,12 @@ export default class MarkdownToPDF {
 	private readonly _style: string;
 	private readonly _template: string;
 	private readonly _table_of_contents: boolean;
+
+	private readonly _enableHeaderFooter: boolean;
+	private readonly _headerContent: string;
+	private readonly _footerContent: string;
+	private readonly _headerFontSize: string;
+	private readonly _FooterFontSize: string;
 	
 	constructor(options: Options);
 	
