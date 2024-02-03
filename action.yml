@@ -42,21 +42,6 @@ inputs:
   table_of_contents:
     description: '(Boolean) Whether a table of contents should be generated'
     required: false
-  enableHeaderFooter:
-    description: '(Boolean) Whether to enable the header and footer'
-    required: false
-  headerContent:
-    description: '(String) The content of the header'
-    required: false
-  footerContent:
-    description: '(String) The content of the footer'
-    required: false
-  headerFontSize:
-    description: '(String) The font size of the header'
-    required: false
-  footerFontSize:
-    description: '(String) The font size of the footer'
-    required: false
 
 branding:
   icon: 'book'
