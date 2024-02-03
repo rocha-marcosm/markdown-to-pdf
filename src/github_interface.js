@@ -171,7 +171,6 @@ let md = new md2pdf({
     template: template,
 
     table_of_contents: table_of_contents,
-
 });
 md.start();
 
