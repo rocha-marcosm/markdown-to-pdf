@@ -172,13 +172,6 @@ let md = new md2pdf({
 
     table_of_contents: table_of_contents,
 
-    //header and footer content
-    enableHeaderFooter: enableHeaderFooter,
-    headerContent: headerContent,
-    footerContent: footerContent,
-    headerFontSize: headerFontSize,
-    FooterFontSize: FooterFontSize,
-    // end of header and footer content
 });
 md.start();
 
