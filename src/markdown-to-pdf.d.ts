@@ -26,6 +26,14 @@ export interface Options {
 	template: string;
 	
 	table_of_contents?: boolean;
+
+	//header and footer content
+	enableHeaderFooter?: boolean,
+	headerContent: string,
+	footerContent: string,
+	headerFontSize: string,
+	FooterFontSize: string,
+	// end of header and footer content
 }
 
 export interface Result {
