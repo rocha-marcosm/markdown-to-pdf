@@ -26,7 +26,6 @@ export interface Options {
 	template: string;
 	
 	table_of_contents?: boolean;
-
 }
 
 export interface Result {
