@@ -30,6 +30,15 @@ function booleanTransformer(bool) {
     return bool === 'true';
 }
 
+// Custom header and footer content
+const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
+const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
+const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
+const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
+const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');
+// end of custom header and footer content
+
+
 // Process given input_path and set flag indicating if it is a directory or single file path
 // getRunnerInput for input_dir is passed as the fallback value for backwards compatibility
 let InputPath = getRunnerInput(
@@ -222,10 +231,3 @@ if (InputPathIsDir) {
         md.close();
     })();
 }
-
-// Custom header and footer content
-const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
-const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
-const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
-const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
-const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');
