@@ -171,6 +171,14 @@ let md = new md2pdf({
     template: template,
 
     table_of_contents: table_of_contents,
+
+    //header and footer content
+    enableHeaderFooter: enableHeaderFooter,
+    headerContent: headerContent,
+    footerContent: footerContent,
+    headerFontSize: headerFontSize,
+    FooterFontSize: FooterFontSize,
+    // end of header and footer content
 });
 md.start();
 
@@ -216,8 +224,8 @@ if (InputPathIsDir) {
 }
 
 // Custom header and footer content
-// const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
-// const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
-// const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
-// const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
-// const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');
+const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
+const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
+const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
+const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
+const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');

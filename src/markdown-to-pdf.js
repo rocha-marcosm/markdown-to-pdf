@@ -14,17 +14,6 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItTOC = require('markdown-it-toc-done-right');
 const markdownItEmoji = require('markdown-it-emoji');
 
-
-// Custom header and footer content
-const enableHeaderFooter = getRunnerInput('enable_header_footer', false, booleanTransformer);
-const headerContent = getRunnerInput('header_content', '<span class="title"></span>');
-const footerContent = getRunnerInput('footer_content', '<span class="pageNumber"></span>');
-const headerFontSize = getRunnerInput('header_footer_font_size', '10px');
-const FooterFontSize = getRunnerInput('header_footer_font_size', '10px');
-
-//end of headers
-
-
 function nullCoalescing(value, fallback) {
 	return value !== undefined && value !== null ? value : fallback;
 }
@@ -115,15 +104,14 @@ function slugify(string) {
 	return slug;
 }
 
-
-const PDFLayout = {
-	format: 'A4',
-	scale: .9,
-	displayHeaderFooter: enableHeaderFooter, //true, // Set to true to display header and footer
-	margin: { top: 80, bottom: 50, right: 50, left: 50 },
-	headerTemplate: '<div style="font-size: ${headerFontSize}; text-align: center;">${headerContent}</div>', // Add your header template here
-	footerTemplate: '<div style="font-size: ${FooterFontSize}; text-align: center;">${footerContent}</div>' // Add your footer template here
-};
+// const PDFLayout = {
+// 	format: 'A4',
+// 	scale: .9,
+// 	displayHeaderFooter: enableHeaderFooter, //true, // Set to true to display header and footer
+// 	margin: { top: 80, bottom: 50, right: 50, left: 50 },
+// 	headerTemplate: '<div style="font-size: ${headerFontSize}; text-align: center;">${headerContent}</div>', // Add your header template here
+// 	footerTemplate: '<div style="font-size: ${FooterFontSize}; text-align: center;">${footerContent}</div>' // Add your footer template here
+// };
 
 class MarkdownToPDF {
 
@@ -135,6 +123,14 @@ class MarkdownToPDF {
 		this._template = options.template;
 
 		this._table_of_contents = options.table_of_contents;
+
+		//header and footer content
+		this._enableHeaderFooter = options.enableHeaderFooter;
+		this._headerContent = options.headerContent;
+		this._footerContent = options.footerContent;
+		this._headerFontSize = options.headerFontSize;
+		this._FooterFontSize = options.FooterFontSize;
+		// end of header and footer content
 	}
 
 	start() {
@@ -186,6 +182,18 @@ class MarkdownToPDF {
 		await page.setContent(html).catch(function (err) {
 			throw `Error while rendering page: ${err}`;
 		})
+
+		// header and footer content
+		const PDFLayout = {
+			format: 'A4',
+			scale: .9,
+			displayHeaderFooter: this._enableHeaderFooter,
+			margin: { top: 80, bottom: 50, right: 50, left: 50 },
+			headerTemplate: `<div style="font-size: ${this._headerFontSize}; text-align: center;">${this._headerContent}</div>`,
+			footerTemplate: `<div style="font-size: ${this._FooterFontSize}; text-align: center;">${this._footerContent}</div>`
+		};
+
+		// end of header and footer content
 
 		let pdf = await page.pdf(PDFLayout).then(function (pdf) {
 			return pdf;
